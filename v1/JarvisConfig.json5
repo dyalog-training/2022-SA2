@@ -1,0 +1,5 @@
+{
+    AppInitFn: "utils.initializeApplication",
+    Port: 8800,    
+    IncludeFns: "^[A-Z].*",
+}

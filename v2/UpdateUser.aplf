@@ -1,0 +1,23 @@
+ resp←req UpdateUser ns;rc;msg;users;index
+ ⍝ ns.(login password)
+
+ resp←utils.initializeResponse
+
+ :Hold 'database'
+
+     :If 0≠⊃(rc msg users)←dbapi.readUsers
+         →0⊣resp.(rc msg)←rc msg
+     :EndIf
+
+     :If 0=index←users.login utils.indexOf ns.login
+         →0⊣resp.(rc msg)←1('user ',ns.login,' does not exist')
+     :EndIf
+
+     ns.updatedAt←utils.now
+     ns.password←utils.hashPassword ns.password
+     users[index]←ns
+
+     →0⍴⍨0≠(resp←dbapi.writeUsers users).rc
+     resp.msg←'user ',ns.login,' updated'
+
+ :EndHold

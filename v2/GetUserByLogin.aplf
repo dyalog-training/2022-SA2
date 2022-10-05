@@ -1,0 +1,20 @@
+resp←req GetUserByLogin ns;rc;msg;users;index;login
+⍝ ns.(login)
+⍝ resp.(login password)
+
+ resp←utils.initializeResponse
+
+ :If 0≠⊃(rc msg users)←dbapi.readUsers
+     →0⊣resp.(rc msg)←rc msg
+ :EndIf
+
+ login←⍕ns.login
+
+ resp.(rc msg)←1('user ',login,' not found')
+
+ →0⍴⍨0=≢users
+ →0⍴⍨0=index←users.login utils.indexOf⊆login
+
+ users.password←⊂'***'
+
+ resp.(rc msg payload)←0 ''(users[index])
