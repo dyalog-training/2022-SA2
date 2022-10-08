@@ -1,0 +1,2 @@
+ r←Hello arg
+ r←'Hello ',{⍵↓⍨' '=⊃⍵}(∊⍕arg),' from ',⊃⎕NSI
