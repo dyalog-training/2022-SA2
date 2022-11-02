@@ -5,7 +5,6 @@ This repository contains materials used in conjunction the workshop.
 Prior to the workshop (to be conducted on 9 October 2022), materials will be added and updated. 
 We hope to have everything in place by the end of September, but there is always the possibility of last minute updates.
 
-After the workshop, the presentation materials (PowerPoint, etc.) will be uploaded.
 
 ## Pre-requisites
 
@@ -14,3 +13,20 @@ After the workshop, the presentation materials (PowerPoint, etc.) will be upload
 * One of the following:
   * The ability to download and unzip zip files from GitHub – the files will be downloadable before the end of September, but there could be minor updates after this
   * The ability to copy and unzip zip files from a USB thumb drive on the day of the workshop
+
+## Repository Contents
+
+* `Jarvis.dyalog` - the Jarvis web service server
+* `/clients/` - contains examples of simple calls to Jarvis in Windows batch file, PowerShell, and Python
+* `/SampleCodeLocation/` - contains an example of web service code organized in folders.  The `JarvisConfig.json` file contains an `ExcludeFns` entry that masks certain functions from being exposed as web service endpoints.
+* `/SessionDemo/` - contains a simple example of using server-side sessions to maintain state.
+* `/v1/` - contains "Version 1" of the sample phonebook web service.  The endpoints in this version:
+  * does no request payload validation
+  * does no authentication 
+* `/v2/` - contains "Version 1" of the sample phonebook web service.  The endpoints in this version:
+  * does no request payload validation
+  * performs authentication for endpoints that write to the database
+* `/v3/` - contains "Version 1" of the sample phonebook web service.  The endpoints in this version:
+  * performs request payload validation
+  * performs authentication for endpoints that write to the database
+  * uses appropriate HTTP status codes for error conditions (e.g. 404 for a resource that was not found)  
